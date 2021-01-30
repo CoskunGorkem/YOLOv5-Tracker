@@ -56,18 +56,35 @@ or
 python analysis/main.py --source /path/to/video.mp4 --img_size 160
 ```
 
-## Update on 28th January
+#### Update on 28th January
 
-#### Car Plate Number Detection & Anonymisation script is added. 
+- Car plate number detection & Anonymisation script is added. 
+---
+#### Update on 30th January
 
-If you want to anonymise car plates, please first download the trained model.
-Models have trained with Nvidia-Tesla V100 GPU over 100 epochs on the private european car plate dataset. 
+- Face detection, pistol detection, human face & car plate(both in one) detection models are trained and added in to google cloud
+---
+If you want to use any of these models, please first download the trained model then run:
+```bash
+$ python analysis/main.py --source /path/to/video.mp4 --weights path/to/downloaded/model.pt
+```
+or if you want to anonymized objects;
+```bash
+$ python analysis/anonymization.py --source /path/to/video.mp4 --weights path/to/downloaded/model.pt
+```
+
+
+
+
+Models have trained with Nvidia-Tesla V100 GPU over 100 epochs on the private datasets. 
 
 | Model | size | AP<sub>50</sub> | 
 |---------- |------ |------ |
-| [YOLOv5s](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 92.3 |
-| [YOLOv5x](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 97.5 |
+| [YOLOv5s_carPlate](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 92.3 |
+| [YOLOv5x_carPlate](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 97.5 |
+| [YOLOv5s_pistol](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 95.4 |
+| [YOLOv5s_face](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 98.2 |
+| [YOLOv5s_faceAndCarPlate](https://drive.google.com/drive/folders/1DzhKjlnYQsNT6-UhkhDExFG6ZS1UQHCc)    |640 | 98.2 |
 
-
-- Yolov5s in real-time:
+- YOLOv5s_carPlate in real-time:
 <img src="readmefiles/car_plate.gif" width = "800" >
